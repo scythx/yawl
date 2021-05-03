@@ -156,6 +156,13 @@ public class externalClients extends AbstractPageBean {
     public void setLblConfirmPassword(Label l) { lblConfirmPassword = l; }
 
 
+    private Label lblEmail = new Label();
+
+    public Label getLblEmail() { return lblEmail; }
+
+    public void setLblEmail(Label l) { lblEmail = l; }
+
+
     private Label lblAddress = new Label();
 
     public Label getLblAddress() { return lblAddress; }
@@ -189,6 +196,13 @@ public class externalClients extends AbstractPageBean {
     public PasswordField getTxtConfirmPassword() { return txtConfirmPassword; }
 
     public void setTxtConfirmPassword(PasswordField pw) { txtConfirmPassword = pw; }
+
+
+    private TextField txtEmail = new TextField();
+
+    public TextField getTxtEmail() { return txtEmail; }
+
+    public void setTxtEmail(TextField tf) { txtEmail = tf; }
 
 
     private TextField txtAddress = new TextField();
@@ -395,15 +409,16 @@ public class externalClients extends AbstractPageBean {
     public String btnAdd_action() {
         String name = (String) txtName.getText() ;
         String password = (String) txtPassword.getText();
+        String email = (String) txtEmail.getText();
         String address = (String) txtAddress.getText();
         String doco = (String) txtDescription.getText();
         String result;
         if (inputsValid()) {
             if (getMode() == Mode.Edit) {
-                result = _appbean.updateExternalClient(name, password, address, doco);
+                result = _appbean.updateExternalClient(name, password, email, address, doco);
             }
             else {
-                result = _appbean.addExternalClient(name, password, address, doco);
+                result = _appbean.addExternalClient(name, password, email, address, doco);
             }
             if (result.startsWith("Cannot") || result.startsWith("Error")) {
                 msgPanel.error(result);
@@ -425,6 +440,7 @@ public class externalClients extends AbstractPageBean {
                 addPanelHeading = "Edit Client Application Account";
                 btnAddText = "Save";
                 txtName.setText(client.getUserName());
+                txtEmail.setText(client.getEmail());
                 txtAddress.setText(client.getAddress());
                 txtDescription.setText(client.getDocumentation());
                 setMode(Mode.Edit);
@@ -451,6 +467,7 @@ public class externalClients extends AbstractPageBean {
 
     private void clearInputs() {
         txtName.setText("");
+        txtEmail.setText("");
         txtAddress.setText("");
         txtDescription.setText("");
         txtPassword.setText("");
@@ -471,6 +488,7 @@ public class externalClients extends AbstractPageBean {
     private boolean inputsValid() {
         if (isNullOrEmpty((String) txtName.getText()) ||
             isNullOrEmpty((String) txtPassword.getText()) ||
+            isNullOrEmpty((String) txtEmail.getText()) ||
             isNullOrEmpty((String) txtAddress.getText()) ||
             isNullOrEmpty((String) txtDescription.getText())) {
 

@@ -36,8 +36,8 @@ public class YExternalClient extends YClient {
 
     public YExternalClient() { super(); }
 
-    public YExternalClient(String userID, String password, String address, String documentation) {
-        super(userID, password, address, documentation);
+    public YExternalClient(String userID, String password, String email, String address, String documentation) {
+        super(userID, password, email, address, documentation);
     }
 
     public YExternalClient(Element xml) {

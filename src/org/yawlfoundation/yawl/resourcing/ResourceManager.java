@@ -2495,9 +2495,9 @@ public final class ResourceManager extends InterfaceBWebsideController {
     }
 
 
-    public String updateExternalClient(String id, String password, String address, String doco)
+    public String updateExternalClient(String id, String password, String email, String address, String doco)
             throws IOException {
-        String result = _services.updateExternalClient(id, password, address, doco);
+        String result = _services.updateExternalClient(id, password, email, address, doco);
         if (successful(result)) {
             _cache.updateClientCredentials(id, PasswordEncryptor.encrypt(password, ""));
         }

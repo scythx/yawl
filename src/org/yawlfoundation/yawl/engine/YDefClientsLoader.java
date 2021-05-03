@@ -99,11 +99,12 @@ public class YDefClientsLoader {
         int headerEnd = rawLine.indexOf(':');
         if (headerEnd > -1) {
             String[] parts = rawLine.substring(headerEnd + 1).split(",");
-            if (rawLine.startsWith("extClient:") && (parts.length == 4)) {
+            if (rawLine.startsWith("extClient:") && (parts.length == 5)) {
                 _clients.add(new YExternalClient(parts[0].trim(),
                         PasswordEncryptor.encrypt(parts[1].trim(), null),
                         parts[2].trim(),
-                        parts[3].trim()));
+                        parts[3].trim(),
+                        parts[4].trim()));
                 return;
             }
             else if (rawLine.startsWith("service:") && (parts.length == 5)) {

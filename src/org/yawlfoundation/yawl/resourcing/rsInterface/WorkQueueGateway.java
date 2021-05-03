@@ -361,9 +361,10 @@ public class WorkQueueGateway extends HttpServlet {
         } else if (action.equals("addExternalClient")) {
             String name = req.getParameter("name");
             String pw = req.getParameter("password");
+            String email = req.getParameter("email");
             String address = req.getParameter("address");
             String doco = req.getParameter("doco");
-            result = response(_rm.addExternalClient(new YExternalClient(name, pw, address, doco)));
+            result = response(_rm.addExternalClient(new YExternalClient(name, pw, email, address, doco)));
         } else if (action.equals("removeExternalClient")) {
             String id = req.getParameter("name");
             result = response(_rm.removeExternalClient(id));

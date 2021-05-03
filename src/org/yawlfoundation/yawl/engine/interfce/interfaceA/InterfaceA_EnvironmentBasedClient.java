@@ -272,11 +272,12 @@ public class InterfaceA_EnvironmentBasedClient extends Interface_Client {
      * @return a diagnostic XML result message.
      * @throws IOException if bad connection.
      */
-    public String addClientAccount(String name, String password, String address,
+    public String addClientAccount(String name, String password, String email, String address,
                              String documentation, String sessionHandle) throws IOException {
         Map<String, String> params = prepareParamMap("createAccount", sessionHandle);
         params.put("userID", name);
         params.put("password", PasswordEncryptor.encrypt(password, null));
+        params.put("email", email);
         params.put("address", address);
         params.put("doco", documentation);
         return executePost(_backEndURIStr, params);
@@ -285,16 +286,17 @@ public class InterfaceA_EnvironmentBasedClient extends Interface_Client {
 
     public String addClientAccount(YExternalClient client, String sessionHandle)
             throws IOException {
-        return addClientAccount(client.getUserName(), client.getPassword(),
+        return addClientAccount(client.getUserName(), client.getPassword(), client.getEmail(),
                 client.getAddress(), client.getDocumentation(), sessionHandle);
     }
 
 
-    public String updateClientAccount(String name, String password, String address,
+    public String updateClientAccount(String name, String password, String email, String address,
                             String documentation, String sessionHandle) throws IOException {
         Map<String, String> params = prepareParamMap("updateAccount", sessionHandle);
         params.put("userID", name);
         params.put("password", PasswordEncryptor.encrypt(password, null));
+        params.put("email", email);
         params.put("address", address);
         params.put("doco", documentation);
         return executePost(_backEndURIStr, params);

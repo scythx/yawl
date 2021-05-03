@@ -581,11 +581,12 @@ public class WorkQueueGatewayClient extends Interface_Client {
     }
 
 
-    public String addExternalClient(String name, String password, String address, String doco, String handle)
+    public String addExternalClient(String name, String password, String email, String address, String doco, String handle)
             throws IOException {
         Map<String, String> params = prepareParamMap("addExternalClient", handle);
         params.put("name", name);
         params.put("password", password);
+        params.put("email", email);
         params.put("address", address);
         params.put("doco", doco);
         return executePost(_serviceURI, params);

@@ -30,6 +30,7 @@
         </id>
 
         <property name="_password" column="passwordText" access="field"/>
+        <property name="_email" column="email" access="field"/>
         <property name="_address" column="address" access="field"/>
         <property name="_documentation" column="documentation" access="field"/>
     </class>
