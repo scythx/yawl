@@ -141,12 +141,14 @@ public class InterfaceA_EngineBasedServer extends YHttpServlet {
                     msg.append(_engine.getYAWLServices(sessionHandle));
                 }
                 else if ("createAccount".equals(action)) {
+                    String address = request.getParameter("address");
                     String doco = request.getParameter("doco");
-                    msg.append(_engine.createAccount(userID, password, doco, sessionHandle));
+                    msg.append(_engine.createAccount(userID, password, address, doco, sessionHandle));
                 }
                 else if ("updateAccount".equals(action)) {
+                    String address = request.getParameter("address");
                     String doco = request.getParameter("doco");
-                    msg.append(_engine.updateAccount(userID, password, doco, sessionHandle));
+                    msg.append(_engine.updateAccount(userID, password, address, doco, sessionHandle));
                 }
                 else if ("deleteAccount".equals(action)) {
                     msg.append(_engine.deleteAccount(userID, sessionHandle));

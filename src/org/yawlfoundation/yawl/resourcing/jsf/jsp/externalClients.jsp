@@ -131,7 +131,7 @@
                         <ui:panelLayout binding="#{externalClients.pnlAddService}"
                                         id="pnlAddService"
                                         styleClass="servicesPanel"
-                                        style="height: 210px; top: 273px">
+                                        style="height: 240px; top: 273px">
 
                             <ui:staticText binding="#{externalClients.staticText1}"
                                            id="staticText1"
@@ -157,10 +157,16 @@
                                       style="left: 302px; top: 70px; position: absolute"
                                       text="Confirm Password:"/>
 
+                            <ui:label binding="#{externalClients.lblAddress}"
+                                      for="txtAddress"
+                                      id="lblAddress"
+                                      style="left: 12px; top: 100px; position: absolute"
+                                      text="Address:"/>
+
                             <ui:label binding="#{externalClients.lblDesc}"
                                       for="txtDescription"
                                       id="lblDesc"
-                                      style="left: 12px; top: 100px; position: absolute"
+                                      style="left: 12px; top: 130px; position: absolute"
                                       text="Description:"/>
 
 
@@ -197,22 +203,27 @@
                                            style="left: 430px; top: 70px; width: 170px; position: absolute"
                                            onKeyPress="return disableEnterKey(event);"/>
 
+                            <ui:textField binding="#{externalClients.txtAddress}"
+                                          id="txtAddress"
+                                          style="left: 100px; top: 100px; width: 200px; position: absolute"
+                                          onKeyPress="return disableEnterKey(event);"/>
+
                             <ui:textArea binding="#{externalClients.txtDescription}"
                                          id="txtDescription"
-                                         style="height: 50px; left: 100px; top: 100px; width: 505px; position: absolute"/>
+                                         style="height: 50px; left: 100px; top: 130px; width: 505px; position: absolute"/>
 
                             <ui:button action="#{externalClients.btnAdd_action}"
                                        binding="#{externalClients.btnAdd}"
                                        id="btnAddService"
                                        styleClass="servicesButton"
-                                       style="left: 11px; top: 168px"
+                                       style="left: 11px; top: 198px"
                                        text="#{externalClients.btnAddText}"/>
 
                             <ui:button action="#{externalClients.btnClear_action}"
                                        binding="#{externalClients.btnClear}"
                                        id="btnClearService"
                                        styleClass="servicesButton"
-                                       style="left: 119px; top: 168px"
+                                       style="left: 119px; top: 198px"
                                        text="Clear"/>
 
                         </ui:panelLayout>

@@ -611,7 +611,7 @@ public class YAdminGUI extends JPanel implements InterfaceBClientObserver,
         }
         YExternalClient client = _engineManagement.getExternalClient(userName);
         if (client == null) {
-            client = new YExternalClient(userName, "password", null);
+            client = new YExternalClient(userName, "password", null, null);
             _engineManagement.addExternalClient(client);
         }
         {

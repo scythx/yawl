@@ -593,22 +593,22 @@ public class ApplicationBean extends AbstractApplicationBean {
     }
 
 
-    public String updateExternalClient(String name, String pw, String doco) {
+    public String updateExternalClient(String name, String pw, String address, String doco) {
         try {
-            return _rm.updateExternalClient(name, pw, doco);
+            return _rm.updateExternalClient(name, pw, address, doco);
         } catch (IOException ioe) {
             return "Error attempting to update client. Please see the log files for details.";
         }
     }
 
 
-    public String addExternalClient(String name, String pw, String doco) {
+    public String addExternalClient(String name, String pw, String address, String doco) {
         String result;
         if (name.equals("admin")) {
             return "Cannot add client 'admin' because it is a reserved client name.";
         }
         try {
-            YExternalClient client = new YExternalClient(name, pw, doco);
+            YExternalClient client = new YExternalClient(name, pw, address, doco);
             result = _rm.addExternalClient(client);
             if (_rm.successful(result)) refreshExternalClients();
         } catch (IOException ioe) {

@@ -35,19 +35,22 @@ public class YClient {
 
     protected String _userName;
     protected String _password;
+    protected String _address;
     protected String _documentation;
 
     public YClient() {}
 
-    public YClient(String userID, String password, String documentation) {
+    public YClient(String userID, String password, String address, String documentation) {
         _userName = userID;
         _password = password;
+        _address = address;
         _documentation = documentation;
     }
 
     public YClient(Element xml) {
         _userName = xml.getChildText("username");
         _password = xml.getChildText("password");
+        _address = xml.getChildText("address");
         _documentation = xml.getChildText("documentation");
     }
 
@@ -60,6 +63,11 @@ public class YClient {
     public String getPassword() { return _password; }
 
     public void setPassword(String password) { _password = password; }
+
+
+    public String getAddress() { return _address; }
+
+    public void setAddress(String address) { _address = address; }
 
 
     public String getDocumentation() { return _documentation; }
@@ -82,6 +90,7 @@ public class YClient {
         XNode root = new XNode("client");
         root.addChild("username", _userName);
         root.addChild("password", _password);
+        root.addChild("address", _address);
         root.addChild("documentation", _documentation);
         return root.toString();
     }

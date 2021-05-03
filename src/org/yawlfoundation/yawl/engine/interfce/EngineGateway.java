@@ -178,9 +178,9 @@ public interface EngineGateway extends Remote {
 
     String unloadSpecification(YSpecificationID specID, String sessionHandle) throws RemoteException;
 
-    String createAccount(String userName, String password, String doco, String sessionHandle) throws RemoteException;
+    String createAccount(String userName, String password, String address, String doco, String sessionHandle) throws RemoteException;
 
-    String updateAccount(String userName, String password, String doco, String sessionHandle) throws RemoteException;
+    String updateAccount(String userName, String password, String address, String doco, String sessionHandle) throws RemoteException;
 
     String getAccounts(String sessionHandle) throws RemoteException;
 

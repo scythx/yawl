@@ -360,9 +360,9 @@ public abstract class AbstractEngineClient {
     }
 
 
-    public String updateExternalClient(String id, String password, String doco)
+    public String updateExternalClient(String id, String password, String address, String doco)
             throws IOException {
-        return _interfaceAClient.updateClientAccount(id, password, doco,
+        return _interfaceAClient.updateClientAccount(id, password, address, doco,
                 getSessionHandle());
     }
 

@@ -575,7 +575,7 @@ public class WorkQueueGatewayClientAdapter {
     public String addExternalClient(YExternalClient client, String handle)
             throws IOException {
         return _wqclient.addExternalClient(client.getUserName(),
-                client.getPassword(), client.getDocumentation(),  handle);
+                client.getPassword(), client.getAddress(), client.getDocumentation(),  handle);
     }
 
 

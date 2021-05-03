@@ -156,6 +156,13 @@ public class externalClients extends AbstractPageBean {
     public void setLblConfirmPassword(Label l) { lblConfirmPassword = l; }
 
 
+    private Label lblAddress = new Label();
+
+    public Label getLblAddress() { return lblAddress; }
+
+    public void setLblAddress(Label l) { lblAddress = l; }
+
+
     private Label lblDesc = new Label();
 
     public Label getLblDesc() { return lblDesc; }
@@ -182,6 +189,13 @@ public class externalClients extends AbstractPageBean {
     public PasswordField getTxtConfirmPassword() { return txtConfirmPassword; }
 
     public void setTxtConfirmPassword(PasswordField pw) { txtConfirmPassword = pw; }
+
+
+    private TextField txtAddress = new TextField();
+
+    public TextField getTxtAddress() { return txtAddress; }
+
+    public void setTxtAddress(TextField tf) { txtAddress = tf; }
 
 
     private TextArea txtDescription = new TextArea();
@@ -381,14 +395,15 @@ public class externalClients extends AbstractPageBean {
     public String btnAdd_action() {
         String name = (String) txtName.getText() ;
         String password = (String) txtPassword.getText();
+        String address = (String) txtAddress.getText();
         String doco = (String) txtDescription.getText();
         String result;
         if (inputsValid()) {
             if (getMode() == Mode.Edit) {
-                result = _appbean.updateExternalClient(name, password, doco);
+                result = _appbean.updateExternalClient(name, password, address, doco);
             }
             else {
-                result = _appbean.addExternalClient(name, password, doco);
+                result = _appbean.addExternalClient(name, password, address, doco);
             }
             if (result.startsWith("Cannot") || result.startsWith("Error")) {
                 msgPanel.error(result);
@@ -410,6 +425,7 @@ public class externalClients extends AbstractPageBean {
                 addPanelHeading = "Edit Client Application Account";
                 btnAddText = "Save";
                 txtName.setText(client.getUserName());
+                txtAddress.setText(client.getAddress());
                 txtDescription.setText(client.getDocumentation());
                 setMode(Mode.Edit);
             }
@@ -435,6 +451,7 @@ public class externalClients extends AbstractPageBean {
 
     private void clearInputs() {
         txtName.setText("");
+        txtAddress.setText("");
         txtDescription.setText("");
         txtPassword.setText("");
         txtConfirmPassword.setText("");
@@ -454,6 +471,7 @@ public class externalClients extends AbstractPageBean {
     private boolean inputsValid() {
         if (isNullOrEmpty((String) txtName.getText()) ||
             isNullOrEmpty((String) txtPassword.getText()) ||
+            isNullOrEmpty((String) txtAddress.getText()) ||
             isNullOrEmpty((String) txtDescription.getText())) {
 
             msgPanel.warn(getMode().name() + " Client Account: Please enter values in all fields.");

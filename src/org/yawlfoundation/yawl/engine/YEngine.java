@@ -2009,12 +2009,13 @@ public class YEngine implements InterfaceADesign,
     }
 
 
-    public boolean updateExternalClient(String id, String password, String doco)
+    public boolean updateExternalClient(String id, String password, String address, String doco)
             throws YPersistenceException {
         YExternalClient client = _externalClients.get(id);
         if (client != null) {
             client.setPassword(password);
             client.setDocumentation(doco);
+            client.setAddress(address);
             doPersistAction(client, YPersistenceManager.DB_UPDATE);
         }
         return (client != null);
@@ -2095,7 +2096,8 @@ public class YEngine implements InterfaceADesign,
                 // if its not yet there, add it
                 if (! _externalClients.containsKey("admin")) {
                     addExternalClient(new YExternalClient("admin",
-                        PasswordEncryptor.encrypt("YAWL", null), "generic admin user"));
+                        PasswordEncryptor.encrypt("YAWL", null), null,
+                        "generic admin user"));
                 }
             }
             else {

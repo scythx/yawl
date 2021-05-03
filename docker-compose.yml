@@ -1,0 +1,31 @@
+services:
+  tomcat:
+    image: tomcat:7.0
+    ports:
+    - "8888:8080"
+    volumes:
+    - ./output/costService.war:/usr/local/tomcat/webapps/costService.war
+    - ./output/digitalSignature.war:/usr/local/tomcat/webapps/digitalSignature.war
+    - ./output/documentStore.war:/usr/local/tomcat/webapps/documentStore.war
+    - ./output/mailSender.war:/usr/local/tomcat/webapps/mailSender.war
+    - ./output/mailService.war:/usr/local/tomcat/webapps/mailService.war
+    - ./output/monitorService.war:/usr/local/tomcat/webapps/monitorService.war
+    - ./output/procletService.war:/usr/local/tomcat/webapps/procletService.war
+    - ./output/resourceService.war:/usr/local/tomcat/webapps/resourceService.war
+    - ./output/schedulingService.war:/usr/local/tomcat/webapps/schedulingService.war
+    - ./output/twitterService.war:/usr/local/tomcat/webapps/twitterService.war
+    - ./output/workletService.war:/usr/local/tomcat/webapps/workletService.war
+    - ./output/yawlSMSInvoker.war:/usr/local/tomcat/webapps/yawlSMSInvoker.war
+    - ./output/yawl.war:/usr/local/tomcat/webapps/yawl.war
+    - ./output/yawlWSInvoker.war:/usr/local/tomcat/webapps/yawlWSInvoker.war
+    depends_on:
+    - "postgres"
+  postgres:
+    image: postgres:12
+    environment:
+      POSTGRES_PASSWORD: postgres
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8889:8080

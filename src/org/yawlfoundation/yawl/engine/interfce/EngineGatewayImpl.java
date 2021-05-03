@@ -1108,7 +1108,7 @@ public class EngineGatewayImpl implements EngineGateway {
      * @param sessionHandle
      * @return diagnostic XML message.
      */
-    public String createAccount(String userName, String password, String doco, String sessionHandle) {
+    public String createAccount(String userName, String password, String address, String doco, String sessionHandle) {
         String sessionMessage = checkSession(sessionHandle);
         if (isFailureMessage(sessionMessage)) return sessionMessage;
 
@@ -1117,7 +1117,7 @@ public class EngineGatewayImpl implements EngineGateway {
                 return failureMessage("A client with that name already exists");
             }
             boolean success = _engine.addExternalClient(
-                    new YExternalClient(userName, password, doco));
+                    new YExternalClient(userName, password, address, doco));
             return success ? SUCCESS : failureMessage("Null username or password");
         }
         catch (YPersistenceException ype) {
@@ -1134,12 +1134,12 @@ public class EngineGatewayImpl implements EngineGateway {
      * @param sessionHandle
      * @return diagnostic XML message.
      */
-    public String updateAccount(String userName, String password, String doco, String sessionHandle) {
+    public String updateAccount(String userName, String password, String address, String doco, String sessionHandle) {
         String sessionMessage = checkSession(sessionHandle);
         if (isFailureMessage(sessionMessage)) return sessionMessage;
 
         try {
-            boolean success = _engine.updateExternalClient(userName, password, doco);
+            boolean success = _engine.updateExternalClient(userName, password, address, doco);
             if (success)
                 return SUCCESS;
             else return failureMessage("Unknown account name: " + userName);
